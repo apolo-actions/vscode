@@ -1,0 +1,45 @@
+kind: live
+name: Run VS Code in browser
+author: Alexey Naiden
+descr: runs VS Code  and opens it in default web browser
+
+inputs:
+  image:
+    descr: image name
+  job_name:
+    descr: Predictable subdomain name, which replaces JobID in the full job URI
+    default: ""
+  http_port:
+    descr: http port for jupyter
+    default: "8080"
+  http_auth:
+    descr: whether to use http auth for jupter
+    default: "True"
+  volumes_data_remote:
+    descr: reference to a data volume
+  volumes_code_remote:
+    descr: reference to a code volume
+  volumes_config_remote:
+    descr: reference to a config volume
+  volumes_notebooks_remote:
+    descr: reference to a notebooks volume
+  volumes_results_remote:
+    descr: reference to a results volume
+
+job:
+    name: $[[ inputs.job_name ]]
+    image: $[[ inputs.image ]]
+    http_port: $[[ inputs.http_port ]]
+    http_auth: $[[ inputs.http_auth ]]
+    browse: True
+    detach: True
+    volumes:
+      - "$[[ inputs.volumes_data_remote ]]:/project/data:ro"
+      - "$[[ inputs.volumes_code_remote ]]:/project/modules:rw"
+      - "$[[ inputs.volumes_config_remote ]]:/project/config:ro"
+      - "$[[ inputs.volumes_notebooks_remote ]]:/project/notebooks:rw"
+      - "$[[ inputs.volumes_results_remote ]]:/project/results:rw"
+    env:
+      PYTHONPATH: /project/modules
+    bash: |
+      code-server --host 0.0.0.0 --auth none --disable-update-check  /project

@@ -33,6 +33,7 @@ job:
     http_auth: $[[ inputs.http_auth ]]
     browse: True
     detach: True
+    pass_config: True
     volumes:
       - "$[[ inputs.volumes_data_remote ]]:/project/data:ro"
       - "$[[ inputs.volumes_code_remote ]]:/project/modules:rw"

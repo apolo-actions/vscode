@@ -6,6 +6,7 @@ descr: runs VS Code  and opens it in default web browser
 inputs:
   image:
     descr: image name
+    default: "neuromation/base"
   job_name:
     descr: Predictable subdomain name, which replaces JobID in the full job URI
     default: ""

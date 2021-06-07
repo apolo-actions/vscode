@@ -10,9 +10,8 @@ These volumes will be mounted to /project/data, /project/modules, /project/confi
 ```
 jobs:
   vscode:
-    action: gh:neuro-actions/vscode@master
+    action: gh:neuro-actions/vscode@@v1.0.1
     args:
-      image: neuromation/base
       volumes_data_remote: $[[ volumes.data.remote ]]
       volumes_code_remote: $[[ volumes.code.remote ]]
       volumes_config_remote: $[[ volumes.config.remote ]]
@@ -24,7 +23,8 @@ jobs:
 
 ### `image`
 
-The name of the image on which to run the VS Code instance.
+The name of the image on which to run the VS Code instance. 
+Default is `neuromation/base`. If you use an image that's not derived from `neuromation/base`, make sure it has the [VS Code server](https://github.com/cdr/code-server) installed.
 
 ### Example
 
@@ -46,7 +46,7 @@ args:
 
 ### `http_port`
 
-HTTP port to use for Jupyter. `"8080"` by default
+HTTP port to use for VS Code. `"8080"` by default.
 
 ### Example
 
@@ -57,7 +57,7 @@ args:
 
 ### `http_auth`
 
-Whether to use HTTP authentication for Jupyter or not. `"True"` by default.
+Whether to use HTTP authentication for VS Code Web UI or not. `"True"` by default.
 
 ### Example
 

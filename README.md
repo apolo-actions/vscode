@@ -10,7 +10,7 @@ These volumes will be mounted to /project/data, /project/modules, /project/confi
 ```
 jobs:
   vscode:
-    action: gh:neuro-actions/vscode@@v1.0.1
+    action: gh:apolo-actions/vscode@@v1.0.1
     args:
       volumes_data_remote: $[[ volumes.data.remote ]]
       volumes_code_remote: $[[ volumes.code.remote ]]
@@ -24,13 +24,13 @@ jobs:
 ### `image`
 
 The name of the image on which to run the VS Code instance. 
-Default is `neuromation/base`. If you use an image that's not derived from `neuromation/base`, make sure it has the [VS Code server](https://github.com/cdr/code-server) installed.
+Default is `ghcr.io/neuro-inc/base:latest`. If you use an image that's not derived from `ghcr.io/neuro-inc/base:latest`, make sure it has the [VS Code server](https://github.com/cdr/code-server) installed.
 
 ### Example
 
 ```
 args:
-	image: neuromation/base
+	image: ghcr.io/neuro-inc/base:latest
 ```
 
 ### `job_name`

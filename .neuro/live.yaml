@@ -33,9 +33,9 @@ volumes:
 
 jobs:
   vscode:
-    action: gh:neuro-actions/vscode@master
+    action: gh:apolo-actions/vscode@master
     args:
-      image: neuromation/base
+      image: ghcr.io/neuro-inc/base:latest
       job_name: vscode
       http_auth: False
       volumes_data_remote: $[[ volumes.data.remote ]]

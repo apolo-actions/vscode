@@ -26,6 +26,9 @@ inputs:
     descr: reference to a notebooks volume
   volumes_results_remote:
     descr: reference to a results volume
+  preset:
+    description: Preset to use for the job
+    default: "cpu-small"
 
 job:
   name: $[[ inputs.job_name ]]
@@ -35,6 +38,7 @@ job:
   browse: True
   detach: True
   pass_config: True
+  preset: "$[[ inputs.preset ]]"
   volumes:
     - "$[[ inputs.volumes_data_remote ]]:/project/data:ro"
     - "$[[ inputs.volumes_code_remote ]]:/project/modules:rw"

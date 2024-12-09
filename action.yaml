@@ -27,7 +27,7 @@ inputs:
   volumes_results_remote:
     descr: reference to a results volume
   preset:
-    description: Preset to use for the job
+    descr: Preset to use for the job
     default: "cpu-small"
 
 job:
